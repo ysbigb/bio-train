@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>我的课件</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <style>
+        .sui-layout-msc{ 
+            
+        }
+        .sui-layout-msc a{
+            color: #000;
+        }
+        .sui-layout-msc .bar{
+            border-top:0.2rem solid #58b5bc;
+            background-color: #fff;
+            height: 2.4rem;
+        }
+        .sui-layout-msc .bar a{
+            color: #000;
+        }
+        .sui-layout-msc .bar .title{
+            color: #aaa;
+        }
+        .sui-layout-msc .content{
+            top: 2.4rem;
+            background-color: transparent;
+        }
+        .sui-layout-msc .list-block{
+            margin: 0 0;
+        }
+        .courware{
+            background: #fff url('cutImg/courware.png') 0 0 no-repeat;
+            -webkit-background-size: contain;
+            background-size: contain;
+            position: absolute;
+            width: 1.8rem;
+            height: 1.5rem;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+        .sui-layout-msc .list-block .item-title{
+            padding-left: 2.8rem;
+        }
+        .sui-layout-msc .item-content a{
+            width: 100%;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="page sui-layout-msc">
+          <header class="bar bar-nav">
+          <a class="icon icon-left pull-left external" href="index.html"></a>
+            <h1 class="title">我的课件</h1>
+          </header>
+          <div class="content infinite-scroll infinite-scroll-bottom" data-distance="100">
+            <div class="list-block">
+                <ul class="list-container">
+                        <li class="item-content item-link">
+                        <a href="cour.html" class="external">
+                            
+                            <div class="item-inner">
+                                <div class="courware">1</div>
+                                <div class="item-title">课件0</div>
+                            </div>
+                        </a>
+                        </li>
+                </ul>
+            </div>
+            <!-- 加载提示符 -->
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
+          </div>
+    </div>
+
+    <script type='text/javascript' src='js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='js/sm.js' charset='utf-8'></script>
+    <script type='text/javascript'>
+        // 加载flag
+      var loading = false;
+      // 最多可加载的条目
+      var maxItems = 100;
+
+      // 每次加载添加多少条目
+      var itemsPerLoad = 20;
+
+      function addItems(number, lastIndex) {
+              // 生成新条目的HTML
+              var html = '';
+              for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+                  html += '<li class="item-content item-link">' +
+                        '<a href="" class="external">' +
+                            '<div class="item-inner">' +
+                                '<div class="courware">'+ i +'</div>' +
+                                '<div class="item-title">'+ i +'</div>' +
+                            '</div>' +
+                        '</a>' +
+                        '</li>';
+              }
+              // 添加新条目
+              $('.infinite-scroll-bottom .list-container').append(html);
+
+          }
+          //预先加载20条
+      addItems(itemsPerLoad, 0);
+
+      // 上次加载的序号
+
+      var lastIndex = 20;
+
+      // 注册'infinite'事件处理函数
+      $(document).on('infinite', '.infinite-scroll-bottom',function() {
+
+          // 如果正在加载，则退出
+          if (loading) return;
+          // 设置flag
+          loading = true;
+
+          // 模拟1s的加载过程
+          setTimeout(function() {
+              // 重置加载flag
+              loading = false;
+
+              if (lastIndex >= maxItems) {
+                  // 加载完毕，则注销无限加载事件，以防不必要的加载
+                  $.detachInfiniteScroll($('.infinite-scroll'));
+                  // 删除加载提示符
+                  $('.infinite-scroll-preloader').remove();
+                  return;
+              }
+
+              // 添加新条目
+              addItems(itemsPerLoad, lastIndex);
+              // 更新最后加载的序号
+              lastIndex = $('.list-container li').length;
+              //容器发生改变,如果是js滚动，需要刷新滚动
+              $.refreshScroller();
+          }, 1000);
+      });
+    </script>
+  </body>
+</html>

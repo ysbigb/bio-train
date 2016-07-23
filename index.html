@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>在线培训平台</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <style>
+
+        .sui-layout-index-titele{
+          color: #aaa;
+        }
+        .sui-layout-index-page{
+          background-color: #fff;
+        }
+        .sui-layout-index-page .bar{
+          border-top:0.2rem solid #58b5bc;
+          background-color: #fff;
+          height: 2.4rem;
+        }
+        .sui-layout-index-page .bar a{
+          color: #000;
+        }
+        .sui-layout-index-page .content{
+          top: 2.4rem;
+        }
+        .sui-layout-index-content .row{
+          margin-top: 20%;
+        }
+        .sui-layout-index-content .row img{
+        }
+        /*panel*/
+        .sui-layout-index-panel{
+          background-color: #fff;
+        }
+        .sui-layout-index-panel .panel{
+        }
+        .sui-layout-index-panel .bar {
+          border-top:0.2rem solid #58b5bc;
+          background-color: #fff;
+          height: 2.4rem;
+        }
+
+        .sui-layout-index-panel .bar .title {
+          color: #aaa;
+        }
+        .sui-layout-index-panel .bar a {
+          color: #000;
+        }
+        .sui-layout-index-panel .list-block {
+          margin-top: 2.4rem;
+        }
+        .sui-layout-index-panel .list-block a{
+          color: #000;
+        }
+        .sui-layout-index-panel .list-block .item-inner  {
+          min-height: 3.2rem;
+        }
+        .sui-layout-index-panel .list-block .item-inner:after {
+          background: #6f6b6b;
+        }
+    </style>
+  </head>
+  <body>
+   <div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page sui-layout-index-page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav">
+                <a class="icon icon-me pull-left open-panel"></a>
+                <h1 class="title sui-layout-index-titele">在线培训平台</h1>
+                <a class="icon pull-right icon-refresh" href="http:www.baidu.com"></a>
+            </header>
+            <!-- 这里是页面内容区 -->
+            <div class="content sui-layout-index-content">
+                  <div class="row">
+                        <div class="col-50" style="text-align:center">
+                          <a href="mycourseware.html" class="external">
+                            <img src="cutImg/my-kj.png" alt="">
+                          </a>
+                        </div>
+                        <div class="col-50" style="text-align:center">
+                          <a href="">
+                            <img src="cutImg/my-note.png" alt="">
+                          </a>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-50" style="text-align:center">
+                          <a href="" class="external">
+                            <img src="cutImg/my-exam.png" alt="">
+                          </a>
+                        </div>
+                        <div class="col-50" style="text-align:center">
+                          <a href="" class="external">
+                            <img src="cutImg/my-message.png" alt="">
+                          </a>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-50" style="text-align:center">
+                          <a href="" class="external">
+                            <img src="cutImg/my-book.png" alt="">
+                          </a>
+                        </div>
+                        <div class="col-50" style="text-align:center">
+                          <a href="" class="external">
+                            <img src="cutImg/exam.png" alt="">
+                          </a>
+                        </div>
+                  </div>
+            </div>
+        </div>
+
+        <!-- 其他的单个page内联页（如果有） -->
+    </div>
+
+    <!-- popup, panel 等放在这里 -->
+    <div class="panel-overlay"></div>
+    <!-- Left Panel with Reveal effect -->
+    <div class="panel panel-left panel-reveal sui-layout-index-panel">
+
+          <header class="bar bar-nav">
+            <a class="icon icon-right pull-left close-panel"></a>
+            <h1 class="title">会员中心</h1>
+          </header>
+
+          <div class="list-block">
+          <a href="http:www.baidu.com" class="external">
+            <div class="item-content item-link">
+              <div class="item-inner">
+                  正在参与的培训
+              </div>
+            </div>
+          </a>
+
+          <a href="http:www.baidu.com" class="external">
+            <div class="item-content item-link">
+              <div class="item-inner">
+                  正在参与的培训
+              </div>
+            </div>
+          </a>
+
+           <a href="http:www.baidu.com" class="external">
+            <div class="item-content item-link">
+              <div class="item-inner">
+                  正在参与的培训
+              </div>
+            </div>
+          </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 默认必须要执行$.init(),实际业务里一般不会在HTML文档里执行，通常是在业务页面代码的最后执行 -->
+    <script>$.init()</script>
+
+    <script type='text/javascript' src='js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='js/sm.js' charset='utf-8'></script>
+
+  </body>
+</html>

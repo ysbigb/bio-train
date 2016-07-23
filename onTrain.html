@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>正参与的培训班</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <style>
+        .sui-layout-ontrain{ 
+            
+        }
+        .sui-layout-ontrain a{
+            color: #000;
+        }
+        .sui-layout-ontrain .bar{
+            border-top:0.2rem solid #58b5bc;
+            background-color: #fff;
+            height: 2.4rem;
+        }
+        .sui-layout-ontrain .bar a{
+            color: #000;
+        }
+        .sui-layout-ontrain .bar .title{
+            color: #aaa;
+        }
+        .sui-layout-ontrain .content{
+            top: 2.4rem;
+            background-color: transparent;
+        }
+        .sui-layout-ontrain .list-block{
+            margin: 0 0;
+        }
+        .sui-layout-ontrain .list-block .item-inner{
+            padding-bottom: 0.45rem;
+        }
+        .courware{
+            background: #fff url('cutImg/courware.png') 0 0 no-repeat;
+            -webkit-background-size: contain;
+            background-size: contain;
+            position: absolute;
+            width: 1.8rem;
+            height: 1.5rem;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+        .sui-layout-ontrain .list-block .item-title{
+          width: 100%;
+        }
+        .sui-layout-ontrain .item-content a{
+          width: 100%;
+        }
+        .row{
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flex;
+          display: -o-flex;
+          display: flex;
+          align-items: center;
+        }
+        .row .col-80{
+          margin-left: 0;
+        }
+        .ittL{
+          color: #c6c6c6;
+        }
+        .ittR{
+          margin-left: 0;
+          text-align: center;
+        }
+        .ittR .progress{
+          border: 1px solid #62c3d0;
+          border-radius: 100%;
+          color: #62c3d0;
+          height: 3rem;
+          width: 3rem;
+          margin: .5rem auto;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flex;
+          display: -o-flex;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="page sui-layout-ontrain">
+          <header class="bar bar-nav">
+          <a class="icon icon-left pull-left external" href="index.html"></a>
+            <h1 class="title">正参与的培训班</h1>
+          </header>
+          <div class="content infinite-scroll infinite-scroll-bottom" data-distance="100">
+            <div class="list-block">
+                <ul class="list-container">
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">
+                                  <div class="row">
+                                    <div class="ittL col-20">0/000</div>  
+                                    <div class="ittR col-80">
+                                      <div class="progress">100%</div>
+                                      生物实验室规章制度培训班
+                                    </div>
+                                  </div>
+                                  </div>
+                            </div>
+                        </li>
+                </ul>
+            </div>
+            <!-- 加载提示符 -->
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
+          </div>
+    </div>
+
+    <script type='text/javascript' src='js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='js/sm.js' charset='utf-8'></script>
+    <script type='text/javascript'>
+        // 加载flag
+      var loading = false;
+      // 最多可加载的条目
+      var maxItems = 100;
+
+      // 每次加载添加多少条目
+      var itemsPerLoad = 20;
+
+      function addItems(number, lastIndex) {
+              // 生成新条目的HTML
+              var html = '';
+              for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+                  html += '<li class="item-content">' +
+                            '<div class="item-inner">' +
+                                '<div class="item-title">' +
+                                  '<div class="row">' +
+                                    '<div class="ittL col-20">0/000</div>' +  
+                                    '<div class="ittR col-80">'+
+                                      '<div class="progress">100%</div>' +
+                                      '生物实验室规章制度培训班'+
+                                    '</div>' +
+                                  '</div>' +
+                                  '</div>' +
+                            '</div>' +
+                        '</li>';
+              }
+              // 添加新条目
+              $('.infinite-scroll-bottom .list-container').append(html);
+
+          }
+          //预先加载20条
+      addItems(itemsPerLoad, 0);
+
+      // 上次加载的序号
+
+      var lastIndex = 20;
+
+      // 注册'infinite'事件处理函数
+      $(document).on('infinite', '.infinite-scroll-bottom',function() {
+
+          // 如果正在加载，则退出
+          if (loading) return;
+          // 设置flag
+          loading = true;
+
+          // 模拟1s的加载过程
+          setTimeout(function() {
+              // 重置加载flag
+              loading = false;
+
+              if (lastIndex >= maxItems) {
+                  // 加载完毕，则注销无限加载事件，以防不必要的加载
+                  $.detachInfiniteScroll($('.infinite-scroll'));
+                  // 删除加载提示符
+                  $('.infinite-scroll-preloader').remove();
+                  return;
+              }
+
+              // 添加新条目
+              addItems(itemsPerLoad, lastIndex);
+              // 更新最后加载的序号
+              lastIndex = $('.list-container li').length;
+              //容器发生改变,如果是js滚动，需要刷新滚动
+              $.refreshScroller();
+          }, 1000);
+      });
+    </script>
+  </body>
+</html>
